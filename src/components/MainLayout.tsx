@@ -1,6 +1,6 @@
 // src/components/MainLayout.tsx
 
-import type { FC, ReactNode } from 'react';
+import type { FC, ReactNode,} from 'react';
 import { useState } from 'react';
 import {
   Box,
@@ -42,10 +42,10 @@ interface MainLayoutProps {
 const DRAWER_WIDTH = 260;
 
 const menuItems = [
-  { text: 'Dashboard', icon: <DashboardIcon />, path: '/' },
+  { text: 'Roles', icon: <DashboardIcon />, path: '/roles' },
+  { text: 'Usuarios', icon: <PeopleIcon />, path: '/usuarios' },
   { text: 'Asignaturas', icon: <SchoolIcon />, path: '/asignaturas' },
   { text: 'Cursos', icon: <ClassIcon />, path: '/cursos' },
-  { text: 'Usuarios', icon: <PeopleIcon />, path: '/usuarios' },
   { text: 'Inscripciones', icon: <PersonAddIcon />, path: '/inscripciones' },
   { text: 'Notas', icon: <AssessmentIcon />, path: '/notas' },
 ];
@@ -131,7 +131,7 @@ export const MainLayout: FC<MainLayoutProps> = ({ children }) => {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1 }}>
-            Gestión Académica - SENA
+            Gestión Académica
           </Typography>
         </Toolbar>
       </AppBar>
