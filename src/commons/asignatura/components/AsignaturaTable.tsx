@@ -15,6 +15,7 @@ import {
 } from '@mui/material';
 import { Edit as EditIcon, Delete as DeleteIcon } from '@mui/icons-material';
 import type { Asignatura } from '../../../types/index';
+import type { Usuario } from '../../../types';
 
 /**
  * Componente de presentación para tabla de asignaturas
@@ -26,6 +27,11 @@ interface AsignaturaTableProps {
   asignaturas: Asignatura[];
   onEdit: (asignatura: Asignatura) => void;
   onDelete: (id: number) => void;
+}
+
+interface usuarioDetail {
+  nombre: string;
+  apellido: string;
 }
 
 export const AsignaturaTable: FC<AsignaturaTableProps> = ({
