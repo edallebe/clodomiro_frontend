@@ -2,21 +2,19 @@
 
 import type { FC } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { Box } from '@mui/material';
 import { MainLayout } from '../components/MainLayout';
 import { AsignaturaList } from '../commons/asignatura/screens/AsignaturaList';
+import { CursoList } from '../commons/curso/screens/CursoList';
+import { UsuarioList } from '../commons/usuario/screens/UsuarioList';
+import { InscripcionList } from '../commons/inscripcion/screens/InscripcionList';
+import { NotaList } from '../commons/nota/screens/NotaList';
+import { RolList } from '../commons/rol/screens/RolList';
 
 /**
  * Router Principal de la Aplicación
  * Patrón: Centralized Routing
  * 
- * Estructura de rutas:
- * / -> Dashboard (pendiente)
- * /asignaturas -> Gestión de asignaturas
- * /cursos -> Gestión de cursos (pendiente)
- * /usuarios -> Gestión de usuarios (pendiente)
- * /inscripciones -> Gestión de inscripciones (pendiente)
- * /notas -> Gestión de notas (pendiente)
+ * Todos los módulos CRUD están implementados (incluido Roles)
  */
 
 export const AppRouter: FC = () => {
@@ -24,55 +22,23 @@ export const AppRouter: FC = () => {
     <BrowserRouter>
       <MainLayout>
         <Routes>
-          {/* Ruta por defecto - redirige a asignaturas */}
-          <Route path="/" element={<Navigate to="/asignaturas" replace />} />
+          {/* Ruta por defecto */}
+          <Route path="/" element={<Navigate to="/roles" replace />} />
 
-          {/* Módulo Asignaturas */}
+          {/* Módulos implementados */}
+          <Route path="/roles" element={<RolList />} />
+          <Route path="/usuarios" element={<UsuarioList />} />
           <Route path="/asignaturas" element={<AsignaturaList />} />
-
-          {/* Placeholders para otros módulos */}
-          <Route 
-            path="/cursos" 
-            element={
-              <Box p={3}>
-                <h1>Módulo de Cursos (En desarrollo)</h1>
-              </Box>
-            } 
-          />
-          
-          <Route 
-            path="/usuarios" 
-            element={
-              <Box p={3}>
-                <h1>Módulo de Usuarios (En desarrollo)</h1>
-              </Box>
-            } 
-          />
-
-          <Route 
-            path="/inscripciones" 
-            element={
-              <Box p={3}>
-                <h1>Módulo de Inscripciones (En desarrollo)</h1>
-              </Box>
-            } 
-          />
-
-          <Route 
-            path="/notas" 
-            element={
-              <Box p={3}>
-                <h1>Módulo de Notas (En desarrollo)</h1>
-              </Box>
-            } 
-          />
+          <Route path="/cursos" element={<CursoList />} />
+          <Route path="/inscripciones" element={<InscripcionList />} />
+          <Route path="/notas" element={<NotaList />} />
 
           {/* 404 Not Found */}
           <Route 
             path="*" 
             element={
               <Box p={3}>
-                <h1>404 - Página no encontrada</h1>
+                <Typography variant="h4">404 - Página no encontrada</Typography>
               </Box>
             } 
           />
@@ -81,3 +47,6 @@ export const AppRouter: FC = () => {
     </BrowserRouter>
   );
 };
+
+// Imports faltantes
+import { Box, Typography } from '@mui/material';
